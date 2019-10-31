@@ -25,6 +25,7 @@ certname =  master.rscorp.com<br>
 server =  master.rscorp.com<br>
 environment = production<br>
 runinterval = 10m<br>
+<h5>start and enable config</h5><br>
 systemctl start puppetserver<br>
 systemctl enable puppetserver <br>
 <h5>Disable Firewall</h5><br>
