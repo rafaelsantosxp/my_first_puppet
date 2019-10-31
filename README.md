@@ -19,10 +19,10 @@ sudo yum -y install puppetserver<br>
 vim /etc/sysconfig/puppetserver<br>
 vim /etc/puppetlabs/puppet/puppet.conf<br>
 
-[master]
+[master]<br>
 dns_alt_names=master.hakase.io,puppet<br>
  
-[main]
+[main]<br>
 certname =  master.rscorp.com<br>
 server =  master.rscorp.com<br>
 environment = production<br>
