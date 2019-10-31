@@ -11,19 +11,20 @@ sudo ntpdate 0.centos.pool.ntp.org<br>
 sudo systemctl start ntpd<br>
 sudo systemctl enable ntpd<br>
 <h4>Disable SELINUX</h4><br>
-vim /etc/sysconfig/selinux > SELINUX=disabled
-
+vim /etc/sysconfig/selinux > SELINUX=disabled<br>
 <h4>install Puppet</h4><br>
 rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm<br>
 sudo yum -y install puppetserver<br>
 vim /etc/sysconfig/puppetserver<br>
 vim /etc/puppetlabs/puppet/puppet.conf<br>
-<br>
 [master]<br>
 dns_alt_names=master.hakase.io,puppet<br>
- 
 [main]<br>
 certname =  master.rscorp.com<br>
 server =  master.rscorp.com<br>
 environment = production<br>
 runinterval = 10m<br>
+systemctl start puppetserver<br>
+systemctl enable puppetserver <br>
+firewall-cmd --add-port=8140/tcp --permanent<br>
+firewall-cmd --reload<br>
