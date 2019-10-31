@@ -15,10 +15,11 @@ vim /etc/sysconfig/selinux > SELINUX=disabled<br>
 <h4>install Puppet</h4><br>
 rpm -Uvh https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm<br>
 sudo yum -y install puppetserver<br>
+<h5> define puppet server config</h5><br>
 vim /etc/sysconfig/puppetserver<br>
 vim /etc/puppetlabs/puppet/puppet.conf<br>
 [master]<br>
-dns_alt_names=master.hakase.io,puppet<br>
+dns_alt_names=master.rscorp.com<br>
 [main]<br>
 certname =  master.rscorp.com<br>
 server =  master.rscorp.com<br>
@@ -26,5 +27,6 @@ environment = production<br>
 runinterval = 10m<br>
 systemctl start puppetserver<br>
 systemctl enable puppetserver <br>
+<h5>Disable Firewall</h5><br>
 firewall-cmd --add-port=8140/tcp --permanent<br>
 firewall-cmd --reload<br>
